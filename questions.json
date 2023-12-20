@@ -1,0 +1,91 @@
+[
+  {
+    "question": "A coin is thrown two times. What is the probability that at least one tail is obtained?",
+    "options": ["3/4", "1/4", "1/3", "2/3", "None of these"]
+  },
+  {
+    "question": "What is the probability of getting a numbered card when drawn from the pack of 52 cards?",
+    "options": ["1/13", "1/9", "9/13", "11/13", "None of these"]
+  },
+  {
+    "question": "There are 7 purple clips and 5 brown clips. Two clips are selected one by one without replacement. Find the probability that the first is brown and the second is purple.",
+    "options": ["1/35", "35/132", "1/132", "35/144", "None of these"]
+  },
+  {
+    "question": "Find the probability of getting a sum of 8 when two dice are thrown?",
+    "options": ["1/8", "1/5", "1/4", "5/36", "1/3"]
+  },
+  {
+    "question": "Find the probability of an honour card when a card is drawn at random from the pack of 52 cards.",
+    "options": ["4/13", "1/3", "5/12", "7/52", "None of these"]
+  },
+  {
+    "question": "What is the probability of a face card when a card is drawn at random from the pack of 52 cards?",
+    "options": ["1/13", "2/13", "3/13", "4/13", "5/13"]
+  },
+  {
+    "question": "If two dice are rolled together, then find the probability of getting at least one ‘3’?",
+    "options": ["11/36", "1/12", "1/36", "13/25", "13/36"]
+  },
+  {
+    "question": "If a single six-sided die is rolled, then find the probability of getting either 3 or 4.",
+    "options": ["1/2", "1/3", "1/4", "2/3", "1/6"]
+  },
+  {
+    "question": "A container contains 1 red, 3 black, 2 pink and 4 violet gems. If a single gem is chosen at random from the container, then find the probability that it is violet or black?",
+    "options": ["1/10", "3/10", "7/10", "9/10", "None of these"]
+  },
+  {
+    "question": "A jar contains 63 balls (1, 2, 3,……., 63). Two balls are picked at random from the jar one after one and without any replacement. What is the probability that the sum of both balls drawn is even?",
+    "options": ["5/21", "3/23", "5/63", "19/63", "None of these"]
+  },
+  {
+    "question": "There are 30 students in a class, 15 are boys and 15 are girls. In the final exam, 5 boys and 4 girls made an A grade. If randomly one student is chosen from the class, what is the probability of choosing a girl or an ‘A grade student?",
+    "options": ["1/4", "3/10", "1/3", "2/3", "None of these"]
+  },
+  {
+    "question": "What is the probability when a card is drawn at random from a deck of 52 cards is either an ace or a club?",
+    "options": ["2/13", "3/13", "4/13", "5/23", "None of these"]
+  },
+  {
+    "question": "One card is drawn from a deck of 52 cards well shuffling. Calculate the probability that the card will not be a king.",
+    "options": ["12/13", "3/13", "7/13", "5/23", "None of these"]
+  },
+  {
+    "question": "If P(A) = 7/13, P(B) = 9/13 and P(A∩B) = 4/13, find the value of P(A|B).",
+    "options": ["1/9", "2/9", "3/9", "4/9", "None of these"]
+  },
+  {
+    "question": "A one rupee coin and a two rupee coin are tossed once; then calculate a sample space.",
+    "options": ["[HH, HT, TH, TT]", "[HH, TT]", "[TH, HT]", "[HH, TH, TT]", "None of these"]
+  },
+  {
+    "question": "There are 20 tickets numbered 1 to 20. These tickets are mixed up and then a ticket is drawn at random. Find the probability that the ticket drawn has a number which is a multiple of 4 or 5?",
+    "options": ["1/4", "2/13", "8/15", "9/20", "None of these"]
+  },
+  {
+    "question": "1. Therefore, the probability of getting a student who likes mutton = 80/300 = 4/15 The probability of getting a student who likes either chicken or mutton = (95+80)/300 = 175/300 = 7/12 The probability of getting a student who likes neither fish nor mutton = (300–120−80)/300 = 100/300 = 1/3 Total possible outcomes = 90 (Since the number plates are numbered from 1 to 90). Number of favourable outcomes = 90 – 9 = 81 (  here, except 1 to 9, other numbers are two-digit number.) Thus required probability = Number of Favourable Outcomes /Total Number of Possible Outcomes = 81/90 = 9/10. Total possible outcomes = 90. Number of favourable outcomes = 9 [here 1, 4, 9, 16, 25, 36, 49, 64 and 81 are the perfect squares] Thus the required probability = 9/90 =1/10  Total possible outcomes = 90. Number of favourable outcomes = 18 (here, 5 × 1, 5 × 2, 5 × 3, …., 5 × 18 are multiples of 5). Thus, the required probability= 18/90 =1/5"
+,
+    "options": ["3/10", "4/15", "1/10", "1/15", "None of these"]
+  },
+  {
+    "question": "The probability that the student likes either chicken or mutton.",
+    "options": ["7/12", "5/12", "3/4", "1/12", "None of these"]
+  },
+  {
+    "question": "The probability that the student likes neither fish nor mutton.",
+    "options": ["1/2", "1/5", "1/3", "1/4", "1/6"]
+  },
+  {
+    "question": "The number is a two-digit number. A box contains 90 number plates numbered 1 to 90. If one number plate is drawn at random from the box then find out the probability that  The number is a two-digit number  21) The number is a perfect square  22) The number is a multiply of 5",
+    "options": ["1/9", "1/10", "9/10", "7/10", "None of these"]
+  },
+  {
+    "question": "The number is a perfect square.",
+    "options": ["1/9", "1/10", "9/10", "1/7", "None of these"]
+  },
+  {
+    "question": "The number is a multiple of 5.",
+    "options": ["1/5", "1/6", "1/10", "1/8", "9/10"]
+  }
+]

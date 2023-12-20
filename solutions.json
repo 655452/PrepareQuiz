@@ -1,0 +1,71 @@
+[
+    {
+      "solution": "Sample space = [TT, TH, HT, HH] Total number of ways = 2 × 2 = 4. Favourite Cases = 3 P (A) = 3/4 Tricks: P (of getting at least one tail) = 1 – P (no head)⇒ 1 – 1/4 = 3/4"
+    },
+    {
+      "solution": "Total Cards = 52. Numbered Cards = 9 (2,3,4,5,6,7,8,9,10) in each suit Numbered cards in four suits = 4 × 9 = 36 P (E) = 36/52 = 9/13"
+    },
+    {
+      "solution": "P (B) × P (P) = (5/12) x (7/11) = 35/132"
+    },
+    {
+      "solution": "Total number of ways = 6 × 6 = 36 ways. Favorable cases = (2 , 6) (6, 2) (3, 5) (5, 3) (4, 4) — 5 ways. P (A) = 5/36 = 5/36"
+    },
+    {
+      "solution": "Honor cards = 4 (A, J, Q, K) in each suit Honor cards in 4 suits = 4 × 4 = 16 P (honor card) = 16/52 = 4/13"
+    },
+    {
+      "solution": "face cards = 3 (J,Q,K) in each suit Face cards in 4 suits = 3 × 4 = 12 Cards. P (face Card) = 12/52 = 3/13"
+    },
+    {
+      "solution": "Total number of ways = 6 × 6 = 36. Probability of getting number ‘3′ at least one time = 1 – (Probability of getting no number 4) = 1 – (5/6) x (5/6) = 1 – 25/36 = 11/36"
+    },
+    {
+      "solution": "Total outcomes = 6 Probability of getting a single number when rolled a die = 1/6 So, P(3) = 1/6 and P(4) = 1/6 Thus, the probability of getting either 3 or 4 = P(3)+P(4) = 1/6 + 1/6 = 1/3"
+    },
+    {
+      "solution": "Total gems =( 1 + 3 + 2 + 4 ) = 10 probability of getting a violet gem = 4/10 Probability of getting a black gem = 3/10 Now, P ( Violet or Black) = P(violet) + P(Black) = 4/10 + 3/10 = 7/10"
+    },
+    {
+      "solution": "Sum of numbers can be even if we add either two even numbers or two odd numbers. Number of even numbers from 1 to 63 = 31 Number of odd numbers from 1 to 63 = 32 Probability of getting two even numbers = (32/63) * (31/62) = 16/63 Probability of getting two odd numbers = (31/63) * (30/62) = 5/21 P(two even numbers OR two odd numbers) = 16/63 + 5/21 = 31/63"
+    },
+    {
+      "solution": "Here, the total number of boys = 15 and the total number of girls = 15 Also, girls getting A grade = 4 and boys getting an A grade = 5 Probability of choosing a girl = 15/30 Probability of choosing A grade student= 9/30 Now, an A-grade student chosen can be a girl. So the probability of choosing it = 4/30 Required probability of choosing a girl or an A grade student = 15/30 + 9/30 – 4/30 = 1/2 + 3/10 – 2/15 = 2/3"
+    },
+    {
+      "solution": "There are 4 aces in a pack, 13 club cards and 1 ace of club card. Now, the probability of getting an ace = 4/52 Probability of getting a club = 13/52 Probability of getting an ace of club = 1/52 Required probability of getting an ace or a club = 4/52 + 13/52 – 1/52 = 16/52 = 4/13"
+    },
+    {
+      "solution": "Well-shuffling ensures equally likely outcomes. Total king of a deck = 4 The number of favourable outcomes F= 52 – 4 = 48 The number of possible outcomes = 52 Therefore, the required probability = 48/52 = 12/13"
+    },
+    {
+      "solution": "If P(A) = 7/13, P(B) = 9/13 and P(A∩B) = 4/13, find the value of P(A|B). P(A|B) = P(A∩B)/P(B) = (4/13)/(9/13) = 4/9."
+    },
+    {
+      "solution": "The outcomes are either Head (H) or tail(T). Now,heads on both coins = (H,H) = HH Tails on both coins = ( T, T) = TT Probability of head on one rupee coin and Tail on the two rupee coins = (H, T) = HT And Tail on one rupee coin and Head on the two rupee coin = (T, H) = TH Thus, the sample space ,S = [HH, HT, TH, TT]"
+    },
+    {
+      "solution": "Here, S = {1, 2, 3, 4, …., 19, 20} = 20 Multiples of 4: 4, 8, 12, 16, 20 (5 tickets) Multiples of 5: 5, 10, 15, 20 (4 tickets) Notice that ticket number 20 is a multiple of both 4 and 5, so we have counted it twice. Therefore, we need to subtract one from the total count. Total number of tickets with numbers that are multiples of 4 or 5: 5 + 4 – 1 = 8 The total number of tickets is 20, so the probability of drawing a ticket with a number that is a multiple of 4 or 5 is: P = 8/20 = 2/5 = 0.4 Therefore, the probability that the ticket drawn has a number which is a multiple of 4 or 5 is 0.4 or 40%."
+    },
+   
+    {
+        "solution": "Therefore, the probability of getting a student who likes mutton = 80/300 = 4/15"
+      },
+      {
+        "solution": "The probability of getting a student who likes either chicken or mutton = (95+80)/300 = 175/300 = 7/12"
+      },
+      {
+        "solution": "The probability of getting a student who likes neither fish nor mutton = (300–120−80)/300 = 100/300 = 1/3"
+      },
+      {
+        "solution": "Total possible outcomes = 90 (Since the number plates are numbered from 1 to 90). Number of favourable outcomes = 90 – 9 = 81 (  here, except 1 to 9, other numbers are two-digit number.) Thus required probability = Number of Favourable Outcomes /Total Number of Possible Outcomes = 81/90 = 9/10."
+      },
+      {
+        "solution": "Total possible outcomes = 90. Number of favourable outcomes = 9 [here 1, 4, 9, 16, 25, 36, 49, 64 and 81 are the perfect squares] Thus the required probability = 9/90 =1/10"
+      },
+      {
+        "solution": "Total possible outcomes = 90. Number of favourable outcomes = 18 (here, 5 × 1, 5 × 2, 5 × 3, …., 5 × 18 are multiples of 5). Thus, the required probability= 18/90 =1/5"
+      }
+
+]
+  

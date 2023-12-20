@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <style>
+        .correct {
+            background-color: rgb(118, 227, 118);
+        }
+
+        .incorrect {
+            background-color: rgb(248, 68, 68);
+        }
+
+        .index {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(242, 39, 73);
+            transition: 1s;
+        }
+        .index:hover{
+            transform: scale(1.2);
+            opacity: 0.5;
+            transition: 1s;
+        }
+
+        .attempted {
+            background-color: rgb(97, 235, 97);
+        }
+
+        .center,
+        .wrap,
+        .locationtrack,
+        .index {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap {
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .locationtrack {
+            height: auto;
+            width: 20%;
+            flex-wrap: wrap;
+            /* border: 2px solid black; */
+        }
+
+        .Questions {
+            /* border: 2px solid black; */
+            width: 50%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .option {
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .badge{
+            border-radius: 50px 50px;
+            transform: scale(0.7) ;
+            transition: ease-in-out 1s;
+        }
+        .badge:hover{
+            transform: scale(1.2) ;
+            
+            transition: 1s;
+            opacity: 0.5;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .wrap {
+                flex-direction: column;
+            }
+            .locationtrack {
+            width: 100%;
+        }
+
+        
+
+            .Questions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+        }
+        #timer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+           background: linear-gradient(45deg,rgb(123, 123, 225),rgb(189, 13, 43));
+        }
+        .answers{
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <h1 class="text-2xl text-center font-bold mb-4">Quiz Application</h1>
+ <div id="timer" style="margin-top: 10px; font-weight: bold;"></div>
+    <div class="wrap">
+        <div class="locationtrack p-4" id="displayIndex"></div>
+        <div class="Questions p-4">
+            <div class="card bg-white rounded shadow-md" id="questionCard">
+                <h3 id="questionTitle" class="text-lg font-semibold mb-2"></h3>
+                <p id="questionText" class="text-sm mb-4"></p>
+
+                <div class="options" id="optionsContainer"></div>
+
+                <button class="btn mt-2 animate-pulse" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container to display selected answers at the end -->
+    <div id="selectedAnswersContainer" class="mt-8 p-4 bg-white rounded shadow-md"></div>
+
+  
+
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    
+    <script>
+         // Your existing JavaScript code
+
+        // GSAP ScrollTrigger animation
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Define your animations using GSAP
+        const animations = [
+            // Example animation for index elements
+            gsap.from('.index', {
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                duration: 1,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: '.index',
+                    start: 'top 80%',
+                    end: '+=500',
+                    scrub: 1, // Smooth scrolling effect
+                }
+            }),
+
+            // Add more animations as needed
+        ];
+
+        // Trigger the animations
+        animations.forEach(animation => {
+            ScrollTrigger.create(animation);
+        });
+        let currentQuestionIndex = 0;
+     let questions;
+     let timer;
+     let selectedAnswers = [];
+     let answers;
+     let solutions;
+ 
+     // Load answers from JSON file
+     fetch('answers.json')
+         .then(response => response.json())
+         .then(data => {
+             answers = data;
+             
+         })
+         .catch(error => console.error('Error loading answers:', error));
+    // Load solutions from JSON file
+    fetch('solutions.json')
+         .then(response => response.json())
+         .then(data => {
+             solutions = data;
+             
+         })
+         .catch(error => console.error('Error loading solutions:', error));
+     // Load questions from JSON file
+     fetch('questions.json')
+         .then(response => response.json())
+         .then(data => {
+             questions = data;
+             console.log(data.length)
+             displayindex(data.length)
+             displayQuestion();
+             startTimer();// timer
+         })
+         .catch(error => console.error('Error loading questions:', error));
+         
+     function displayindex(ind){
+         let index=document.getElementById("displayIndex");
+         for (let i = 0; i < ind; i++) {
+         let element = document.createElement("div");
+         element.classList.add("index");
+         element.innerHTML=`${i+1}`
+         console.log(element);
+ 
+         // Append the created element to the index element
+         index.appendChild(element);
+     }
+         
+     }
+ 
+     function displayQuestion() {
+         const currentQuestion = questions[currentQuestionIndex];
+ 
+         document.getElementById('questionTitle').innerText = `Question ${currentQuestionIndex + 1}`;
+         document.getElementById('questionText').innerText = currentQuestion.question;
+ 
+         const optionsContainer = document.getElementById('optionsContainer');
+         optionsContainer.innerHTML = '';
+ 
+         currentQuestion.options.forEach((option, index) => {
+             const optionElement = document.createElement('div');
+             optionElement.classList.add('option');
+ 
+             const radioInput = document.createElement('input');
+             radioInput.type = 'radio';
+             radioInput.name = 'option';
+             radioInput.value = option;
+             radioInput.id = `option${index + 1}`;
+ 
+             const label = document.createElement('label');
+             label.for = `option${index + 1}`;
+             label.innerText = option;
+ 
+             optionElement.appendChild(radioInput);
+             optionElement.appendChild(label);
+ 
+             optionsContainer.appendChild(optionElement);
+         });
+ 
+    
+ 
+      // Restart the timer for the next question
+      
+      clearTimeout(timer);
+             startTimer();
+     }
+ 
+     function nextQuestion() {
+         
+         let index=document.getElementById("displayIndex")
+         let index2=document.querySelectorAll(".index")
+         console.log(index)
+ 
+         // Save the selected answer
+         const selectedOption = document.querySelector('input[name="option"]:checked');
+             if (selectedOption) {
+                 selectedAnswers[currentQuestionIndex] = selectedOption.value;
+             }
+        
+         index2[currentQuestionIndex].classList.add("attempted")
+ 
+         // Mark the current question as attempted
+         
+         currentQuestionIndex++;
+ 
+         if (currentQuestionIndex < questions.length) {
+             displayQuestion();
+         } else {
+            // End of questions, display selected answers
+            displaySelectedAnswers();
+         }
+     }
+ 
+ 
+     function startTimer() {
+     let timeRemaining = 10; // 10 seconds
+ 
+     function updateTimer() {
+         document.getElementById('timer').innerText = `Time Remaining: ${timeRemaining}s`;
+ 
+         if (timeRemaining > 0) {
+             timeRemaining--;
+         } else {
+             // Clear the interval when the timer reaches 0
+             clearInterval(timer);
+ 
+             // Move to the next question
+             nextQuestion();
+         }
+     }
+ 
+     // Clear any existing timer interval
+     clearInterval(timer);
+ 
+     // Set a timer to update every second
+     timer = setInterval(updateTimer, 1000);
+ 
+     // Initial display of the timer
+     updateTimer();
+ }
+ 
+
+
+function displaySelectedAnswers() {
+    const selectedAnswersContainer = document.getElementById('selectedAnswersContainer');
+    selectedAnswersContainer.innerHTML = '<h2>Selected Answers:</h2>';
+    
+    const reactionTimes = [];
+
+    questions.forEach((question, index) => {
+        const selectedAnswer = selectedAnswers[index];
+        const questionNumber = index + 1;
+
+        const answerElement = document.createElement('div');
+        answerElement.classList.add("answers");
+        answerElement.innerHTML = `<p><b>Question</b> ${questionNumber}: ${question.question}</p>
+                                   <p class=${selectedAnswer === answers[index] ? "correct" : "incorrect"}>Selected Answer: ${selectedAnswer || 'Not attempted'}</p>
+                                   <p><b>Correct answer</b> ${answers[index]}</p>
+                                   <p><b>Solutions </b> ${solutions[index]['solution']}</p>`;
+
+        selectedAnswersContainer.appendChild(answerElement);
+
+       
+    });
+
+    // Display achievement badge based on the score
+   
+    const score = calculateScore(selectedAnswers);
+    const badge = getAchievementBadge(score/answers.length);
+
+    Swal.fire({
+        title: 'Quiz Completed!',
+        html: `<p >Your Score: ${score}/${answers.length}</p>
+        <center><img class="badge" src="${badge}" alt="Badge" style="width: 100px;"></center>`,
+        showCancelButton: true,
+        cancelButtonText: 'Close',
+        showConfirmButton: false,
+    });
+
+   
+}
+
+function calculateScore(selectedAnswers) {
+    let score = 0;
+    for (let i = 0; i < selectedAnswers.length; i++) {
+        if (selectedAnswers[i] === answers[i]) {
+            score++;
+        }
+    }
+    
+    return score;
+}
+
+function getAchievementBadge(score) {
+    // Define your logic to determine the badge URL based on the score
+    // Example logic: return different badge URLs for different score ranges
+    if (score >= 0.8) {
+        return 'https://via.placeholder.com/100/FDCA40/000000?text=Gold';
+    } else if (score >= 0.5) {
+        return 'https://via.placeholder.com/100/B0B0B0/000000?text=Silver';
+    } else {
+        return 'https://via.placeholder.com/100/8B4513/000000?text=Bronze';
+    }
+}
+
+
+
+
+ 
+     </script>
+</body>
+
+</html>
