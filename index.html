@@ -163,33 +163,9 @@
     <script>
          // Your existing JavaScript code
 
-        // GSAP ScrollTrigger animation
-        gsap.registerPlugin(ScrollTrigger);
+     
 
-        // Define your animations using GSAP
-        const animations = [
-            // Example animation for index elements
-            gsap.from('.index', {
-                opacity: 0,
-                y: 50,
-                stagger: 0.2,
-                duration: 1,
-                ease: 'power4.out',
-                scrollTrigger: {
-                    trigger: '.index',
-                    start: 'top 80%',
-                    end: '+=500',
-                    scrub: 1, // Smooth scrolling effect
-                }
-            }),
-
-            // Add more animations as needed
-        ];
-
-        // Trigger the animations
-        animations.forEach(animation => {
-            ScrollTrigger.create(animation);
-        });
+          
         let currentQuestionIndex = 0;
      let questions;
      let timer;
