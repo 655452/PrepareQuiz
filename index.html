@@ -9,6 +9,33 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
     <style>
+        /* animation */
+        @keyframes traverseUp {
+    0% {
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(0) translateX(-60px);
+    }
+    100% {
+        transform: translateY(-450px) translateX(-60px); /* Adjust this value based on your needs */
+    }
+}
+
+        #next{
+            position: relative;
+        }
+        .circle{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+            border-radius: 50%;
+            
+        
+         
+        }
+      
         .correct {
             background-color: rgb(118, 227, 118);
         }
@@ -135,20 +162,19 @@
 
 <body class="bg-gray-100">
     <h1 class="text-2xl text-center font-bold mb-4">Quiz Application</h1>
-
+ <div id="timer" style="margin-top: 10px; font-weight: bold;"></div>
     <div class="wrap">
-         
-        <div class="locationtrack p-4" id="displayIndex"></div>
-        <div class="Questions p-4">
+        <div class="locationtrack p-4" id="displayIndex">
             
+        </div>
+        <div class="Questions p-4">
             <div class="card bg-white rounded shadow-md" id="questionCard">
-                <div id="timer" style="margin-top: 10px; font-weight: bold;"></div>
                 <h3 id="questionTitle" class="text-lg font-semibold mb-2"></h3>
                 <p id="questionText" class="text-sm mb-4"></p>
 
                 <div class="options" id="optionsContainer"></div>
 
-                <button class="btn mt-2 animate-pulse" onclick="nextQuestion()">Next</button>
+                <button class="btn mt-2 animate-pulse" id="next" onclick="nextQuestion()">Next</button>
             </div>
         </div>
     </div>
@@ -164,11 +190,8 @@
 
     
     <script>
-         // Your existing JavaScript code
-
-     
-
-          
+         
+       
         let currentQuestionIndex = 0;
      let questions;
      let timer;
@@ -272,6 +295,7 @@
          // Mark the current question as attempted
          
          currentQuestionIndex++;
+         animate(currentQuestionIndex)
  
          if (currentQuestionIndex < questions.length) {
              displayQuestion();
@@ -280,7 +304,31 @@
             displaySelectedAnswers();
          }
      }
- 
+     function animate(value) {
+    console.log(value);
+    let next = document.getElementById("next");
+    let location = document.getElementById("displayIndex");
+
+    let index = document.querySelectorAll(".index");
+
+    console.log(next.getBoundingClientRect(), location.getBoundingClientRect(), index[0].getBoundingClientRect());
+
+    // Create a new circle element for 'next'
+    let newENext = document.createElement("div");
+    newENext.classList.add("circle", );
+    newENext.style.animation="traverseUp 1s infinite"
+    // Append the new circle to the 'next' div
+    next.appendChild(newENext);
+
+   
+
+    // After 1 second, remove the circles
+    setTimeout(() => {
+        next.removeChild(newENext);
+       
+    }, 1000);
+}
+
  
      function startTimer() {
      let timeRemaining = 60; // 10 seconds
